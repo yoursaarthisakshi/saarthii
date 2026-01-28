@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Star, Quote } from "lucide-react";
+import { Star, Quote, Camera } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -8,13 +8,18 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const testimonials = [
   {
     initials: "A.K.",
     rating: 5,
     quote:
-      "Sakshi helped me understand patterns I'd been repeating for years. Her gentle approach made me feel safe to open up.",
+      "I was skeptical at first, but Sakshi's approach is so warm and understanding. She helped me see patterns I was blind to for years. After just a few sessions, I started feeling lighter and more in control of my emotions.",
     service: "1:1 Therapy",
     color: "coral",
   },
@@ -22,7 +27,7 @@ const testimonials = [
     initials: "R.M.",
     rating: 5,
     quote:
-      "I finally learned how to set boundaries without guilt. The sessions gave me clarity I didn't know I needed.",
+      "The boundary-setting techniques she taught me changed my relationships completely. I used to feel guilty saying no, but now I understand it's an act of self-love. Thank you, Sakshi!",
     service: "Life Coaching",
     color: "lavender",
   },
@@ -30,7 +35,7 @@ const testimonials = [
     initials: "P.S.",
     rating: 5,
     quote:
-      "She creates such a warm, non-judgmental space. I felt heard for the first time in a long time.",
+      "I reached out during one of my lowest points. Sakshi created such a safe space that I could finally talk about things I'd buried for years. She listens without judgment and offers genuine insights.",
     service: "Online Consultation",
     color: "peach",
   },
@@ -38,7 +43,7 @@ const testimonials = [
     initials: "N.D.",
     rating: 5,
     quote:
-      "Working with Sakshi changed how I relate to my emotions. I'm more self-aware and kinder to myself now.",
+      "My anxiety was affecting my work and relationships. Through our sessions, I learned practical coping strategies that actually work. I'm more self-aware now and much kinder to myself.",
     service: "1:1 Therapy",
     color: "pink",
   },
@@ -46,10 +51,26 @@ const testimonials = [
     initials: "T.J.",
     rating: 5,
     quote:
-      "Her blend of professional insight and practical advice is exactly what I needed. Highly recommend!",
+      "What I love about Sakshi is her blend of professional expertise and practical, actionable advice. She doesn't just talk theory - she gives you tools you can use immediately. Life-changing!",
     service: "Life Coaching",
     color: "coral",
   },
+  {
+    initials: "S.R.",
+    rating: 5,
+    quote:
+      "I was going through a difficult breakup and felt completely lost. Sakshi helped me process my emotions and rediscover my self-worth. I'm grateful for her patience and wisdom.",
+    service: "Online Consultation",
+    color: "lavender",
+  },
+];
+
+// Placeholder for feedback screenshots - replace with actual screenshot imports
+// Example: import feedback1 from "@/assets/feedback1.jpg";
+const feedbackScreenshots: { src: string; alt: string }[] = [
+  // Add your feedback screenshots here:
+  // { src: feedback1, alt: "Client feedback screenshot 1" },
+  // { src: feedback2, alt: "Client feedback screenshot 2" },
 ];
 
 const TestimonialsSection = () => {
@@ -107,7 +128,7 @@ const TestimonialsSection = () => {
             </p>
           </div>
 
-          {/* Carousel */}
+          {/* Testimonials Carousel */}
           <Carousel
             setApi={setApi}
             opts={{
@@ -160,7 +181,7 @@ const TestimonialsSection = () => {
                       </div>
 
                       {/* Quote */}
-                      <p className="text-foreground/80 leading-relaxed italic">
+                      <p className="text-foreground/80 leading-relaxed italic text-sm">
                         "{testimonial.quote}"
                       </p>
                     </div>
@@ -192,6 +213,57 @@ const TestimonialsSection = () => {
               <CarouselNext className="relative inset-0 translate-x-0 translate-y-0 h-10 w-10 border-primary/30 hover:bg-primary hover:text-primary-foreground" />
             </div>
           </Carousel>
+
+          {/* Feedback Screenshots Gallery */}
+          {feedbackScreenshots.length > 0 && (
+            <div className="mt-16">
+              <div className="text-center mb-8">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+                  <Camera className="h-4 w-4" />
+                  <span>Real Feedback</span>
+                </div>
+                <h3 className="text-2xl font-display font-bold">
+                  Screenshots from Happy Clients
+                </h3>
+              </div>
+              
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {feedbackScreenshots.map((screenshot, index) => (
+                  <Dialog key={index}>
+                    <DialogTrigger asChild>
+                      <button className="group relative aspect-[3/4] rounded-xl overflow-hidden bg-secondary/50 border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg">
+                        <img
+                          src={screenshot.src}
+                          alt={screenshot.alt}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
+                          <span className="text-white text-sm font-medium">Click to view</span>
+                        </div>
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-2xl p-2">
+                      <img
+                        src={screenshot.src}
+                        alt={screenshot.alt}
+                        className="w-full h-auto rounded-lg"
+                      />
+                    </DialogContent>
+                  </Dialog>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Placeholder for when no screenshots are added yet */}
+          {feedbackScreenshots.length === 0 && (
+            <div className="mt-16 text-center">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary text-muted-foreground text-sm">
+                <Camera className="h-4 w-4" />
+                <span>Feedback screenshots coming soon</span>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>
