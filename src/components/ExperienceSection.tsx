@@ -9,7 +9,7 @@ const experiences = [
     description:
       "Providing one-on-one therapy sessions for emotional healing, relationship guidance, and self-awareness development.",
     icon: Briefcase,
-    stats: { value: 800, label: "Individuals Guided" },
+    stats: { value: 1200, label: "Individuals Guided" },
     color: "coral",
   },
   {
@@ -19,7 +19,7 @@ const experiences = [
     description:
       "Working with students on emotional regulation, self-awareness, and developing healthy coping mechanisms.",
     icon: GraduationCap,
-    stats: { value: 500, label: "Students Reached" },
+    stats: { value: 4000, label: "Students Reached" },
     color: "lavender",
   },
 ];
@@ -142,7 +142,7 @@ const ExperienceSection = () => {
             <div className="inline-flex items-center gap-3 bg-card rounded-full px-6 py-3 shadow-sm border border-border/50">
               <Users className="h-5 w-5 text-primary" />
               <span className="text-sm font-medium">
-                Trusted by <span className="text-primary font-bold">1,300+</span> individuals
+                Trusted by <span className="text-primary font-bold">5,200+</span> individuals
                 on their healing journey
               </span>
             </div>
