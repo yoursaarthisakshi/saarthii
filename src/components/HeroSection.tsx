@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Heart, Brain, Sparkles, ArrowDown } from "lucide-react";
-
+import heroProfile from "@/assets/hero_profile.jpg";
 const HeroSection = () => {
   const scrollToContact = () => {
     document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
@@ -37,9 +37,11 @@ const HeroSection = () => {
           {/* Photo placeholder */}
           <div className="mb-8 animate-fade-in-up">
             <div className="w-40 h-40 md:w-52 md:h-52 mx-auto rounded-full bg-gradient-to-br from-coral-light to-lavender p-1">
-              <div className="w-full h-full rounded-full bg-cream flex items-center justify-center">
-                <span className="text-muted-foreground text-sm">Photo</span>
-              </div>
+              <img 
+                src={heroProfile} 
+                alt="Sakshi George - Psychologist and Life Coach"
+                className="w-full h-full rounded-full object-cover"
+              />
             </div>
           </div>
 
