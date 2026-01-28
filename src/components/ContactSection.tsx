@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Instagram, Linkedin, Calendar, Heart } from "lucide-react";
+import { Mail, Instagram, Linkedin, Calendar, Heart, Youtube } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -97,7 +97,7 @@ const ContactSection = () => {
                   </a>
 
                   <a
-                    href="https://instagram.com/Your__Saarthii"
+                    href="https://www.instagram.com/your_saarthii?igsh=MmM2eGozenljbWJl&utm_source=qr"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-4 p-4 rounded-xl bg-secondary/50 hover:bg-secondary transition-colors group"
@@ -107,12 +107,12 @@ const ContactSection = () => {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Instagram</p>
-                      <p className="font-medium">@Your__Saarthii</p>
+                      <p className="font-medium">@your_saarthii</p>
                     </div>
                   </a>
 
                   <a
-                    href="https://linkedin.com/in/sakshi-george"
+                    href="https://www.linkedin.com/in/sakshi-george-731992283"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-4 p-4 rounded-xl bg-secondary/50 hover:bg-secondary transition-colors group"
@@ -123,6 +123,21 @@ const ContactSection = () => {
                     <div>
                       <p className="text-sm text-muted-foreground">LinkedIn</p>
                       <p className="font-medium">Sakshi George</p>
+                    </div>
+                  </a>
+
+                  <a
+                    href="https://youtube.com/@your_saarthii?si=N5eFs8QqnxHSrSn7"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 p-4 rounded-xl bg-secondary/50 hover:bg-secondary transition-colors group"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-red-500 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Youtube className="h-5 w-5 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">YouTube</p>
+                      <p className="font-medium">@your_saarthii</p>
                     </div>
                   </a>
                 </div>
