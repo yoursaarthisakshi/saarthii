@@ -58,22 +58,22 @@ const ContactSection = () => {
                   </div>
                 </div>
 
-                {/* Calendly placeholder - replace with actual embed */}
-                <div className="aspect-[4/3] rounded-xl bg-secondary/50 flex items-center justify-center border-2 border-dashed border-border">
-                  <div className="text-center p-8">
-                    <Calendar className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-                    <p className="text-muted-foreground mb-4">
-                      Calendly booking widget will be embedded here
-                    </p>
-                    <Button
-                      variant="outline"
-                      className="border-primary/30"
-                      onClick={() => window.open("https://calendly.com", "_blank")}
-                    >
-                      Open Calendly
-                    </Button>
-                  </div>
+                {/* Google Form Embed */}
+                <div className="aspect-[4/3] rounded-xl overflow-hidden">
+                  <iframe
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSftC-WR0TExX_3bgkNKNEmJRjlR7qH3P-eegwuVzftwoeeQaQ/viewform?embedded=true"
+                    className="w-full h-full border-0"
+                    title="Book a Session Form"
+                  >
+                    Loading…
+                  </iframe>
                 </div>
+                <Button
+                  className="w-full mt-4 gradient-coral text-white hover:opacity-90 transition-opacity"
+                  onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLSftC-WR0TExX_3bgkNKNEmJRjlR7qH3P-eegwuVzftwoeeQaQ/viewform", "_blank")}
+                >
+                  Open Form in New Tab
+                </Button>
               </div>
             </div>
 
