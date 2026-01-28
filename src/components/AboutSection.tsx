@@ -1,4 +1,5 @@
 import { GraduationCap, Award, BookOpen, Heart } from "lucide-react";
+import aboutPhoto from "@/assets/about_me.png";
 
 const educationTimeline = [
   {
@@ -41,9 +42,11 @@ const AboutSection = () => {
             <div className="order-2 lg:order-1">
               <div className="relative">
                 <div className="aspect-[4/5] rounded-2xl bg-gradient-to-br from-secondary to-lavender-light p-1">
-                  <div className="w-full h-full rounded-2xl bg-cream flex items-center justify-center">
-                    <span className="text-muted-foreground">About Photo</span>
-                  </div>
+                  <img 
+                    src={aboutPhoto} 
+                    alt="Sakshi George - Psychologist and Life Coach"
+                    className="w-full h-full rounded-2xl object-cover"
+                  />
                 </div>
                 {/* Decorative element */}
                 <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full gradient-coral opacity-20 blur-xl" />
