@@ -9,17 +9,28 @@ const ContactSection = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
+    phone: "",
     email: "",
     message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Create WhatsApp message
+    const whatsappNumber = "918504048972";
+    const messageText = `New Contact Form Submission:\n\n*Name:* ${formData.name}\n*Contact Number:* ${formData.phone}\n*Email:* ${formData.email}\n*Message:* ${formData.message}`;
+    const encodedMessage = encodeURIComponent(messageText);
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    // Open WhatsApp
+    window.open(whatsappUrl, "_blank");
+    
     toast({
-      title: "Message sent!",
-      description: "Thank you for reaching out. I'll get back to you soon.",
+      title: "Message ready!",
+      description: "Complete sending your message via WhatsApp.",
     });
-    setFormData({ name: "", email: "", message: "" });
+    setFormData({ name: "", phone: "", email: "", message: "" });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -159,6 +170,17 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <Input
+                      name="phone"
+                      type="tel"
+                      placeholder="Your Contact Number"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      required
+                      className="bg-secondary/50 border-border"
+                    />
+                  </div>
+                  <div>
+                    <Input
                       name="email"
                       type="email"
                       placeholder="Your Email"
@@ -183,7 +205,7 @@ const ContactSection = () => {
                     type="submit"
                     className="w-full gradient-coral text-white hover:opacity-90 transition-opacity"
                   >
-                    Send Message
+                    Send via WhatsApp
                   </Button>
                 </form>
               </div>
