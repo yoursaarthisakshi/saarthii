@@ -6,21 +6,29 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import SkillsSection from "@/components/SkillsSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import ContactSection from "@/components/ContactSection";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
-      <main>
-        <HeroSection />
-        <AboutSection />
-        <ServicesSection />
-        <TestimonialsSection />
-        <SkillsSection />
-        <ExperienceSection />
-        <ContactSection />
-      </main>
-    </div>
+    <AnimatePresence>
+      <motion.div 
+        className="min-h-screen bg-background overflow-x-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <Navigation />
+        <main>
+          <HeroSection />
+          <AboutSection />
+          <ServicesSection />
+          <TestimonialsSection />
+          <SkillsSection />
+          <ExperienceSection />
+          <ContactSection />
+        </main>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 
