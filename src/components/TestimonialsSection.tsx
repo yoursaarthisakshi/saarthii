@@ -14,6 +14,16 @@ import {
   DialogContent,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import feedback1 from "@/assets/feedback1.jpeg";
+import feedback2 from "@/assets/feedback2.jpeg";
+import feedback3 from "@/assets/feedback3.jpeg";
+import feedback4 from "@/assets/feedback4.jpeg";
+import feedback5 from "@/assets/feedback5.jpeg";
+import feedback6 from "@/assets/feedback6.jpeg";
+import feedback7 from "@/assets/feedback7.jpeg";
+import feedback8 from "@/assets/feedback8.jpeg";
+import feedback9 from "@/assets/feedback9.jpeg";
+import feedback10 from "@/assets/feedback10.jpeg";
 
 const testimonials = [
   {
@@ -66,7 +76,18 @@ const testimonials = [
   },
 ];
 
-const feedbackScreenshots: { src: string; alt: string }[] = [];
+const feedbackScreenshots: { src: string; alt: string }[] = [
+  { src: feedback1, alt: "Client feedback - Thank you for everything" },
+  { src: feedback2, alt: "Client feedback - Sessions brought clarity and calm" },
+  { src: feedback3, alt: "Client feedback - Thanks for your time and open heart" },
+  { src: feedback4, alt: "Client feedback - Unwavering support and invaluable advice" },
+  { src: feedback5, alt: "Client feedback - Made me feel like an elder sister" },
+  { src: feedback6, alt: "Client feedback - Life changed after sessions" },
+  { src: feedback7, alt: "Client feedback - Feel more relaxed and calm" },
+  { src: feedback8, alt: "Client feedback - Felt comfortable opening up" },
+  { src: feedback9, alt: "Client feedback - Really feel good to talk with you" },
+  { src: feedback10, alt: "Client feedback - Feeling positive after our session" },
+];
 
 const TestimonialsSection = () => {
   const [api, setApi] = useState<CarouselApi>();
