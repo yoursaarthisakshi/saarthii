@@ -92,57 +92,62 @@ const ContactSection = () => {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-            {/* Calendly Embed Placeholder */}
-            <motion.div 
-              className="order-2 lg:order-1"
-              initial={{ opacity: 0, x: -50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.2 }}
-            >
-              <div className="bg-card rounded-3xl p-8 shadow-xl border border-border/50 h-full">
-                <div className="flex items-center gap-4 mb-8">
-                  <motion.div 
-                    className="w-14 h-14 rounded-2xl gradient-coral flex items-center justify-center shadow-lg shadow-coral/20"
+          {/* Book a Session — Full Width Card */}
+          <motion.div
+            className="mb-14"
+            initial={{ opacity: 0, y: 40 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.15 }}
+          >
+            <div className="bg-card rounded-3xl shadow-xl border border-border/50 overflow-hidden">
+              {/* Card header bar */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-6 sm:px-10 py-6 border-b border-border/40 bg-secondary/30">
+                <div className="flex items-center gap-4">
+                  <motion.div
+                    className="w-12 h-12 rounded-2xl gradient-coral flex items-center justify-center shadow-lg shadow-coral/20 shrink-0"
                     whileHover={{ scale: 1.1, rotate: 5 }}
                   >
-                    <Calendar className="h-7 w-7 text-white" />
+                    <Calendar className="h-6 w-6 text-white" />
                   </motion.div>
                   <div>
                     <h3 className="text-xl md:text-2xl font-display font-bold">Book a Session</h3>
-                    <p className="text-sm text-muted-foreground">Choose a time that works for you</p>
+                    <p className="text-sm text-muted-foreground">Fill the form below to get started</p>
                   </div>
                 </div>
-
-                {/* Google Form Embed */}
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-border/50">
-                  <iframe
-                    src="https://docs.google.com/forms/d/e/1FAIpQLSftC-WR0TExX_3bgkNKNEmJRjlR7qH3P-eegwuVzftwoeeQaQ/viewform?embedded=true"
-                    className="w-full h-full border-0"
-                    title="Book a Session Form"
-                  >
-                    Loading…
-                  </iframe>
-                </div>
                 <Button
-                  className="w-full mt-5 gradient-coral text-white hover:opacity-90 transition-all py-6 rounded-xl shadow-lg shadow-coral/20 hover:shadow-xl hover:shadow-coral/30 group"
+                  variant="outline"
+                  size="sm"
+                  className="rounded-xl border-primary/30 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all gap-2 shrink-0"
                   onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLSftC-WR0TExX_3bgkNKNEmJRjlR7qH3P-eegwuVzftwoeeQaQ/viewform", "_blank")}
                 >
-                  Open Form in New Tab
-                  <ArrowUpRight className="h-5 w-5 ml-2 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  Open in new tab
+                  <ArrowUpRight className="h-4 w-4" />
                 </Button>
               </div>
-            </motion.div>
 
-            {/* Contact Form & Info */}
-            <motion.div 
-              className="order-1 lg:order-2 space-y-8"
-              initial={{ opacity: 0, x: 50 }}
+              {/* Iframe — tall fixed height, scrollable */}
+              <div className="w-full" style={{ height: "720px" }}>
+                <iframe
+                  src="https://docs.google.com/forms/d/e/1FAIpQLSftC-WR0TExX_3bgkNKNEmJRjlR7qH3P-eegwuVzftwoeeQaQ/viewform?embedded=true"
+                  className="w-full h-full border-0"
+                  title="Book a Session Form"
+                  style={{ minWidth: "100%" }}
+                >
+                  Loading…
+                </iframe>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Get in Touch + Send a Message — side by side */}
+          <div className="grid lg:grid-cols-2 gap-8">
+            {/* Contact Info */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.3 }}
             >
-              {/* Contact Info */}
-              <div className="bg-card rounded-3xl p-8 shadow-xl border border-border/50">
+              <div className="bg-card rounded-3xl p-8 shadow-xl border border-border/50 h-full">
                 <h3 className="text-xl md:text-2xl font-display font-bold mb-7">Get in Touch</h3>
                 <div className="space-y-4">
                   {socialLinks.map((link, index) => (
@@ -157,23 +162,29 @@ const ContactSection = () => {
                       transition={{ duration: 0.4, delay: 0.4 + index * 0.08 }}
                       whileHover={{ x: 5 }}
                     >
-                      <motion.div 
-                        className={`w-11 h-11 rounded-xl bg-gradient-to-br ${link.gradient} flex items-center justify-center shadow-lg`}
+                      <motion.div
+                        className={`w-11 h-11 rounded-xl bg-gradient-to-br ${link.gradient} flex items-center justify-center shadow-lg shrink-0`}
                         whileHover={{ scale: 1.1, rotate: 5 }}
                       >
                         <link.icon className="h-5 w-5 text-white" />
                       </motion.div>
-                      <div>
+                      <div className="min-w-0">
                         <p className="text-xs text-muted-foreground font-medium">{link.label}</p>
-                        <p className="font-semibold text-sm md:text-base">{link.value}</p>
+                        <p className="font-semibold text-sm md:text-base truncate">{link.value}</p>
                       </div>
                     </motion.a>
                   ))}
                 </div>
               </div>
+            </motion.div>
 
-              {/* Quick Message Form */}
-              <div className="bg-card rounded-3xl p-8 shadow-xl border border-border/50">
+            {/* Quick Message Form */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.4 }}
+            >
+              <div className="bg-card rounded-3xl p-8 shadow-xl border border-border/50 h-full">
                 <h3 className="text-xl md:text-2xl font-display font-bold mb-7">Send a Message</h3>
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <Input
@@ -222,6 +233,7 @@ const ContactSection = () => {
               </div>
             </motion.div>
           </div>
+
         </div>
       </div>
 
