@@ -247,41 +247,51 @@ const TestimonialsSection = () => {
           {/* Feedback Screenshots Gallery */}
           {feedbackScreenshots.length > 0 && (
             <motion.div 
-              className="mt-20"
+              className="mt-24"
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.4 }}
             >
-              <div className="text-center mb-10">
-                <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+              {/* Gallery Header */}
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4 tracking-wide uppercase">
                   <Camera className="h-4 w-4" />
-                  <span>Real Feedback</span>
+                  <span>Real Messages</span>
                 </div>
-                <h3 className="text-2xl md:text-3xl font-display font-bold">
-                  Screenshots from Happy Clients
+                <h3 className="text-2xl md:text-4xl font-display font-bold mb-3">
+                  Straight from Their{" "}
+                  <span className="text-gradient-coral">Heart ❤️</span>
                 </h3>
+                <p className="text-muted-foreground text-sm md:text-base max-w-xl mx-auto">
+                  Unfiltered messages from people who felt the difference — in their own words.
+                </p>
               </div>
-              
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+
+              {/* Masonry-style gallery */}
+              <div className="columns-2 md:columns-3 lg:columns-5 gap-4 space-y-4">
                 {feedbackScreenshots.map((screenshot, index) => (
                   <Dialog key={index}>
                     <DialogTrigger asChild>
-                      <motion.button 
-                        className="group relative aspect-[3/4] rounded-2xl overflow-hidden bg-secondary/50 border border-border/50 hover:border-primary/50 transition-all hover:shadow-xl"
-                        whileHover={{ y: -5 }}
-                        transition={{ duration: 0.3 }}
+                      <motion.button
+                        className="group relative w-full break-inside-avoid rounded-2xl overflow-hidden border border-border/40 hover:border-primary/50 shadow-sm hover:shadow-xl transition-all duration-300 block"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.5, delay: 0.05 * index }}
+                        whileHover={{ scale: 1.02, y: -3 }}
                       >
                         <img
                           src={screenshot.src}
                           alt={screenshot.alt}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          className="w-full h-auto object-cover block"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-5">
-                          <span className="text-white text-sm font-medium">Click to view</span>
+                        <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                          <span className="text-white text-xs font-semibold tracking-wide bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-full">
+                            View Full
+                          </span>
                         </div>
                       </motion.button>
                     </DialogTrigger>
-                    <DialogContent className="max-w-2xl p-3">
+                    <DialogContent className="max-w-lg p-2 bg-background/95 backdrop-blur">
                       <img
                         src={screenshot.src}
                         alt={screenshot.alt}
